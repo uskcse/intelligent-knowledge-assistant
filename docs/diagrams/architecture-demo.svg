@@ -2,9 +2,9 @@
 <defs><pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#dfe4eb"/></pattern><filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#172b4d" flood-opacity=".08"/></filter><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#55657c" stroke-width="1.5"/></marker></defs>
 <rect width="1920" height="1320" fill="#f8fafc"/><rect width="1920" height="1320" fill="url(#dots)"/>
 <text x="52" y="63" font-family="Arial, Helvetica, sans-serif" font-size="36" fill="#25354b" font-weight="700">INTELLIGENT KNOWLEDGE ASSISTANT</text>
-<text x="52" y="98" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#66758a" font-weight="400">Architecture &amp; demo flow  /  Existing assessment design</text>
+<text x="52" y="98" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#66758a" font-weight="400">Architecture &amp; demo flow  /  Existing repository implementation</text>
 <rect x="1570" y="35" width="295" height="55" rx="10" fill="#fff6d9" stroke="#e9d99b"/>
-<text x="1590" y="69" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#25354b" font-weight="700">DESIGN • NOT YET IMPLEMENTED</text>
+<text x="1590" y="69" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#25354b" font-weight="700">CODE-ALIGNED DEMO VIEW</text>
 <rect x="35" y="130" width="1850" height="265" rx="16" fill="#edf4ff" stroke="#d2e1f5"/>
 <text x="60" y="165" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#315f9b" font-weight="700">01  DOCUMENT INGESTION</text>
 <text x="440" y="165" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#526f95" font-weight="400">Separate process • ingest once, reuse at query time</text>
@@ -19,37 +19,37 @@
 <rect x="330" y="190" width="245" height="110" rx="16" fill="#fff" stroke="#dce3ed"/>
 </g>
 <rect x="330" y="206" width="5" height="78" rx="2" fill="#578bd2"/>
-<text x="350" y="222" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#25354b" font-weight="700">Manifest &amp; extraction</text>
+<text x="350" y="222" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#25354b" font-weight="700">Manifest + PyMuPDF</text>
 <text x="350" y="249" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Hash / skip unchanged</text>
-<text x="350" y="272" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Page-aware text + tables</text>
+<text x="350" y="272" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Extract text per PDF page</text>
 <g filter="url(#shadow)">
 <rect x="600" y="190" width="245" height="110" rx="16" fill="#fff" stroke="#dce3ed"/>
 </g>
 <rect x="600" y="206" width="5" height="78" rx="2" fill="#578bd2"/>
-<text x="620" y="222" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#25354b" font-weight="700">Clean &amp; chunk</text>
-<text x="620" y="249" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Headings + token boundaries</text>
+<text x="620" y="222" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#25354b" font-weight="700">Token-aware chunking</text>
+<text x="620" y="249" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Sentence units + overlap</text>
 <text x="620" y="272" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Page, section and chunk IDs</text>
 <g filter="url(#shadow)">
 <rect x="870" y="190" width="245" height="110" rx="16" fill="#fff" stroke="#dce3ed"/>
 </g>
 <rect x="870" y="206" width="5" height="78" rx="2" fill="#578bd2"/>
 <text x="890" y="222" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#25354b" font-weight="700">Batch embeddings</text>
-<text x="890" y="249" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Embedding provider adapter</text>
-<text x="890" y="272" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Same model at query time</text>
+<text x="890" y="249" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">bge-small-en-v1.5 locally</text>
+<text x="890" y="272" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">sentence-transformers</text>
 <g filter="url(#shadow)">
 <rect x="1140" y="190" width="245" height="110" rx="16" fill="#fff" stroke="#dce3ed"/>
 </g>
 <rect x="1140" y="206" width="5" height="78" rx="2" fill="#578bd2"/>
-<text x="1160" y="222" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#25354b" font-weight="700">Validate &amp; publish</text>
-<text x="1160" y="249" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Stage corpus version</text>
-<text x="1160" y="272" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Activate atomically</text>
+<text x="1160" y="222" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#25354b" font-weight="700">Chroma upsert</text>
+<text x="1160" y="249" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Persist chunks + vectors</text>
+<text x="1160" y="272" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Update file-hash manifest</text>
 <g filter="url(#shadow)">
 <rect x="1410" y="190" width="245" height="110" rx="16" fill="#fff" stroke="#dce3ed"/>
 </g>
 <rect x="1410" y="206" width="5" height="78" rx="2" fill="#578bd2"/>
 <text x="1430" y="222" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#25354b" font-weight="700">Knowledge base</text>
-<text x="1430" y="249" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">PostgreSQL + pgvector</text>
-<text x="1430" y="272" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Vectors + text + metadata</text>
+<text x="1430" y="249" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Chroma HTTP vector DB</text>
+<text x="1430" y="272" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Collection + source metadata</text>
 <polyline points="305,245 330,245" fill="none" stroke="#55657c" stroke-width="2" marker-end="url(#arrow)"/>
 <polyline points="575,245 600,245" fill="none" stroke="#55657c" stroke-width="2" marker-end="url(#arrow)"/>
 <polyline points="845,245 870,245" fill="none" stroke="#55657c" stroke-width="2" marker-end="url(#arrow)"/>
@@ -57,14 +57,14 @@
 <polyline points="1385,245 1410,245" fill="none" stroke="#55657c" stroke-width="2" marker-end="url(#arrow)"/>
 <rect x="60" y="325" width="760" height="43" rx="8" fill="#fff" stroke="#d2e1f5"/>
 <text x="78" y="352" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#25354b" font-weight="400">Persistent source volume: original PDFs + ingestion manifests</text>
-<text x="850" y="352" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#526f95" font-weight="400">Failed ingestion keeps the last working corpus available.</text>
+<text x="850" y="352" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#526f95" font-weight="400">Ingestion runs separately; unchanged files are skipped.</text>
 <rect x="35" y="415" width="1850" height="650" rx="16" fill="#f2f0ff" stroke="#ded8f3"/>
 <text x="60" y="452" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#64519e" font-weight="700">02  QUESTION → EVIDENCE → CITED ANSWER</text>
 <g filter="url(#shadow)">
 <rect x="60" y="490" width="220" height="115" rx="16" fill="#fff" stroke="#dce3ed"/>
 </g>
 <rect x="60" y="506" width="5" height="83" rx="2" fill="#8b79bf"/>
-<text x="80" y="522" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#25354b" font-weight="700">Streamlit UI</text>
+<text x="80" y="522" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#25354b" font-weight="700">Chainlit UI</text>
 <text x="80" y="549" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Ask a question</text>
 <text x="80" y="572" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Show answer + sources</text>
 <g filter="url(#shadow)">
@@ -72,15 +72,15 @@
 </g>
 <rect x="320" y="506" width="5" height="83" rx="2" fill="#8b79bf"/>
 <text x="340" y="522" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#25354b" font-weight="700">FastAPI</text>
-<text x="340" y="549" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Validate request</text>
-<text x="340" y="572" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Request ID + deadline</text>
+<text x="340" y="549" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">POST /ask • QueryService</text>
+<text x="340" y="572" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Request ID + latency logs</text>
 <g filter="url(#shadow)">
 <rect x="590" y="490" width="230" height="115" rx="16" fill="#fff" stroke="#dce3ed"/>
 </g>
 <rect x="590" y="506" width="5" height="83" rx="2" fill="#8b79bf"/>
 <text x="610" y="522" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#25354b" font-weight="700">Query router</text>
-<text x="610" y="549" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Structured classification</text>
-<text x="610" y="572" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Simple / multi-step / unclear</text>
+<text x="610" y="549" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Heuristics + LLM classifier</text>
+<text x="610" y="572" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Simple RAG / agentic</text>
 <polyline points="280,548 320,548" fill="none" stroke="#55657c" stroke-width="2" marker-end="url(#arrow)"/>
 <polyline points="550,548 590,548" fill="none" stroke="#55657c" stroke-width="2" marker-end="url(#arrow)"/>
 <g filter="url(#shadow)">
@@ -88,35 +88,34 @@
 </g>
 <rect x="890" y="501" width="5" height="68" rx="2" fill="#349b9a"/>
 <text x="910" y="517" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#25354b" font-weight="700">Simple RAG</text>
-<text x="910" y="544" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">One retrieval workflow</text>
+<text x="910" y="544" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Retrieve / rewrite once if needed</text>
 <g filter="url(#shadow)">
 <rect x="890" y="625" width="265" height="130" rx="16" fill="#fff4df" stroke="#dce3ed"/>
 </g>
 <rect x="890" y="641" width="5" height="98" rx="2" fill="#c99431"/>
 <text x="910" y="657" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#25354b" font-weight="700">LangGraph agent</text>
-<text x="910" y="684" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Plan → retrieve → assess</text>
-<text x="910" y="707" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Rewrite / retry within budget</text>
+<text x="910" y="684" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Decompose → retrieve each</text>
+<text x="910" y="707" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Aggregate up to 8 chunks</text>
 <text x="910" y="730" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Read-only search tool</text>
 <g filter="url(#shadow)">
 <rect x="590" y="660" width="230" height="95" rx="16" fill="#fff" stroke="#dce3ed"/>
 </g>
 <rect x="590" y="676" width="5" height="63" rx="2" fill="#8b79bf"/>
-<text x="610" y="692" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#25354b" font-weight="700">Clarification</text>
-<text x="610" y="719" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Resolve material ambiguity</text>
+<text x="610" y="692" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#25354b" font-weight="700">Local models</text>
+<text x="610" y="719" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Embedding + reranker</text>
+<text x="610" y="742" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">CPU / GPU device selection</text>
 <polyline points="820,528 890,528" fill="none" stroke="#55657c" stroke-width="2" marker-end="url(#arrow)"/>
 <text x="835" y="513" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#59677a" font-weight="600">simple</text>
 <polyline points="820,560 850,560 850,682 890,682" fill="none" stroke="#55657c" stroke-width="2" marker-end="url(#arrow)"/>
 <text x="834" y="615" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#59677a" font-weight="600">multi-step</text>
-<polyline points="705,605 705,660" fill="none" stroke="#55657c" stroke-width="2" marker-end="url(#arrow)"/>
-<text x="716" y="638" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#59677a" font-weight="600">unclear</text>
 <g filter="url(#shadow)">
 <rect x="1215" y="535" width="300" height="145" rx="16" fill="#effafa" stroke="#dce3ed"/>
 </g>
 <rect x="1215" y="551" width="5" height="113" rx="2" fill="#349b9a"/>
 <text x="1235" y="567" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#25354b" font-weight="700">Shared retrieval service</text>
-<text x="1235" y="594" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Dense + lexical retrieval</text>
-<text x="1235" y="617" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Reciprocal rank fusion</text>
-<text x="1235" y="640" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Authorised corpus version</text>
+<text x="1235" y="594" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Dense + BM25 retrieval</text>
+<text x="1235" y="617" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">RRF + cross-encoder rerank</text>
+<text x="1235" y="640" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Metadata filters / top-k</text>
 <polyline points="1155,535 1180,535 1180,578 1215,578" fill="none" stroke="#55657c" stroke-width="2" marker-end="url(#arrow)"/>
 <polyline points="1155,686 1180,686 1180,635 1215,635" fill="none" stroke="#55657c" stroke-width="2" marker-end="url(#arrow)"/>
 <g filter="url(#shadow)">
@@ -125,56 +124,55 @@
 <rect x="1575" y="551" width="5" height="113" rx="2" fill="#349b9a"/>
 <text x="1595" y="567" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#25354b" font-weight="700">Evidence builder</text>
 <text x="1595" y="594" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Deduplicate retrieved chunks</text>
-<text x="1595" y="617" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Preserve source IDs</text>
-<text x="1595" y="640" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Enforce context token budget</text>
+<text x="1595" y="617" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Preserve document + page IDs</text>
+<text x="1595" y="640" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Top-k / synthesis chunk cap</text>
 <polyline points="1515,608 1575,608" fill="none" stroke="#55657c" stroke-width="2" marker-end="url(#arrow)"/>
 <polyline points="1530,300 1530,470 1370,470 1370,535" fill="none" stroke="#55657c" stroke-width="2" marker-end="url(#arrow)"/>
-<text x="1400" y="455" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#59677a" font-weight="600">query pinned to active corpus</text>
+<text x="1400" y="455" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#59677a" font-weight="600">vector similarity search</text>
 <g filter="url(#shadow)">
 <rect x="890" y="790" width="265" height="95" rx="16" fill="#fff4df" stroke="#dce3ed"/>
 </g>
 <rect x="890" y="806" width="5" height="63" rx="2" fill="#c99431"/>
-<text x="910" y="822" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#25354b" font-weight="700">Workflow checkpoints</text>
-<text x="910" y="849" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Separate PostgreSQL schema</text>
+<text x="910" y="822" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#25354b" font-weight="700">LangGraph state</text>
+<text x="910" y="849" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">In-memory steps + sub-results</text>
 <polyline points="1020,755 1020,790" fill="none" stroke="#55657c" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="7 5"/>
-<text x="1034" y="779" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#59677a" font-weight="600">persist state</text>
+<text x="1034" y="779" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#59677a" font-weight="600">track steps</text>
 <g filter="url(#shadow)">
 <rect x="1575" y="805" width="270" height="110" rx="16" fill="#fff" stroke="#dce3ed"/>
 </g>
 <rect x="1575" y="821" width="5" height="78" rx="2" fill="#8b79bf"/>
-<text x="1595" y="837" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#25354b" font-weight="700">Answer generation</text>
-<text x="1595" y="864" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">LLM synthesis from evidence</text>
-<text x="1595" y="887" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Claims reference source IDs</text>
+<text x="1595" y="837" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#25354b" font-weight="700">Grounding gate</text>
+<text x="1595" y="864" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">No evidence / low score → abstain</text>
+<text x="1595" y="887" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Retrieval-score threshold</text>
 <g filter="url(#shadow)">
 <rect x="1215" y="805" width="300" height="110" rx="16" fill="#fff" stroke="#dce3ed"/>
 </g>
 <rect x="1215" y="821" width="5" height="78" rx="2" fill="#8b79bf"/>
-<text x="1235" y="837" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#25354b" font-weight="700">Grounding &amp; citations</text>
-<text x="1235" y="864" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Validate source identifiers</text>
-<text x="1235" y="887" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Support check / one repair</text>
+<text x="1235" y="837" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#25354b" font-weight="700">Generate + cite</text>
+<text x="1235" y="864" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Ollama • llama3.2:3b</text>
+<text x="1235" y="887" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Refusal sentinel / source mapping</text>
 <g filter="url(#shadow)">
 <rect x="590" y="805" width="230" height="110" rx="16" fill="#eaf6eb" stroke="#dce3ed"/>
 </g>
 <rect x="590" y="821" width="5" height="78" rx="2" fill="#54966a"/>
 <text x="610" y="837" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#25354b" font-weight="700">API response</text>
 <text x="610" y="864" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Answer + citations + route</text>
-<text x="610" y="887" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Status + request ID</text>
+<text x="610" y="887" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Flags + latency + request ID</text>
 <g filter="url(#shadow)">
 <rect x="60" y="805" width="490" height="110" rx="16" fill="#eaf6eb" stroke="#dce3ed"/>
 </g>
 <rect x="60" y="821" width="5" height="78" rx="2" fill="#54966a"/>
 <text x="80" y="837" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#25354b" font-weight="700">Answer in the UI</text>
-<text x="80" y="864" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Answered • Partial • Insufficient evidence</text>
-<text x="80" y="887" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Clarification when needed</text>
+<text x="80" y="864" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Answer + citations / abstention</text>
+<text x="80" y="887" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Workflow steps + latency</text>
 <polyline points="1710,680 1710,805" fill="none" stroke="#55657c" stroke-width="2" marker-end="url(#arrow)"/>
 <polyline points="1575,860 1515,860" fill="none" stroke="#55657c" stroke-width="2" marker-end="url(#arrow)"/>
 <polyline points="1215,860 1185,860 1185,940 850,940 850,860 820,860" fill="none" stroke="#55657c" stroke-width="2" marker-end="url(#arrow)"/>
-<text x="900" y="966" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#6e5c99" font-weight="400">Unsupported claims → repair once or abstain</text>
+<text x="900" y="966" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#6e5c99" font-weight="400">Grounding gate + refusal sentinel → abstention</text>
 <polyline points="590,860 550,860" fill="none" stroke="#55657c" stroke-width="2" marker-end="url(#arrow)"/>
-<polyline points="590,705 570,705 570,835 590,835" fill="none" stroke="#55657c" stroke-width="2" marker-end="url(#arrow)"/>
 <rect x="60" y="985" width="1785" height="53" rx="9" fill="#fff" stroke="#ded8f3"/>
-<text x="80" y="1018" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#64519e" font-weight="700">MODEL PROVIDER ADAPTER</text>
-<text x="375" y="1018" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#25354b" font-weight="400">Embeddings • Routing • Planning • Answer generation • Support check  |  Timeouts, token budgets, capped retries</text>
+<text x="80" y="1018" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#64519e" font-weight="700">PROVIDER FACTORY</text>
+<text x="375" y="1018" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#25354b" font-weight="400">Local embeddings + reranker in-process | Ollama LLM service | Optional OpenAI provider</text>
 <rect x="35" y="1085" width="1850" height="180" rx="16" fill="#fff9e8" stroke="#ebdfbc"/>
 <text x="60" y="1122" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#8a702a" font-weight="700">03  SHARED ENGINEERING CONTROLS</text>
 <g filter="url(#shadow)">
@@ -196,14 +194,14 @@
 </g>
 <rect x="960" y="1156" width="5" height="63" rx="2" fill="#b69a45"/>
 <text x="980" y="1172" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#25354b" font-weight="700">Evaluation &amp; testing</text>
-<text x="980" y="1199" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">12 labelled questions • grounding checks</text>
+<text x="980" y="1199" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Labelled eval set • quality metrics</text>
 <text x="980" y="1222" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Unit + API + end-to-end tests</text>
 <g filter="url(#shadow)">
 <rect x="1410" y="1140" width="435" height="95" rx="16" fill="#fff" stroke="#dce3ed"/>
 </g>
 <rect x="1410" y="1156" width="5" height="63" rx="2" fill="#b69a45"/>
 <text x="1430" y="1172" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#25354b" font-weight="700">Docker Compose</text>
-<text x="1430" y="1199" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Database → ingestion → API → UI</text>
+<text x="1430" y="1199" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Chroma + Ollama → ingest → API → UI</text>
 <text x="1430" y="1222" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#59677a" font-weight="400">Persistent volumes + readiness checks</text>
 <text x="52" y="1300" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#66758a" font-weight="400">Demo: 1. Explain ingestion   2. Ask a simple question   3. Show multi-step retrieval   4. Show an unanswerable question</text>
 </svg>

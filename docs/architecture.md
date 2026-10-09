@@ -155,3 +155,13 @@ flowchart TD
   so "I don't know" is a designed outcome, not an accident.
 - **Separation of concerns** — ingestion, retrieval, generation, agent, and transport are independent
   and independently testable (48 hermetic tests).
+
+## Demo board
+
+The visual below follows the current implementation and default local providers.
+
+![Architecture and demo flow](diagrams/architecture-demo.png)
+
+[Editable SVG](diagrams/architecture-demo.svg) · [Generation script](diagrams/build_architecture.py)
+
+The separate [design proposal](design-proposal.md) records an earlier alternative design; it does not describe the implemented stack.
