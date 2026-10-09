@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.env
+
+# Caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.chainlit/
+.files/
+
+# Data & model artifacts (do NOT commit large/generated files)
+data/chroma/
+data/*.jsonl
+data/manifest.json
+models/
+eval_results/
+
+# Corporate CA certificates (environment-specific, never commit)
+certs/
+
+# OS / editor
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Keep corpus PDFs tracked so the KB is reproducible
+!data/corpus/
+
+# The assessment brief and stray root-level corpus copies are not part of the repo
+# (the canonical corpus lives in data/corpus/).
+/Senior_AI_Engineer_Technical_Assessment.pdf
+/rag_architecture_patterns.pdf
+/vector_database_comparison.pdf
+/agentic_ai_frameworks.pdf

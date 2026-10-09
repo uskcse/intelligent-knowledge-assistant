@@ -1,0 +1,118 @@
+# ---------------------------------------------------------------------------
+# Evaluation set for the Knowledge Assistant.
+# Categories: simple | multi_step | ambiguous | unanswerable
+# Fields:
+#   question             - the user query
+#   category             - evaluation bucket
+#   expected_documents   - documents that SHOULD be retrieved (retrieval metrics)
+#   expected_workflow    - rag | agentic (routing check; omit if not asserted)
+#   expect_abstain       - true if the system SHOULD decline to answer
+#   key_facts            - lowercase substrings expected in a correct answer
+# ---------------------------------------------------------------------------
+
+- id: q1
+  category: simple
+  question: "What chunking strategies does the RAG architecture reference describe?"
+  expected_documents: ["rag_architecture_patterns.pdf"]
+  expected_workflow: rag
+  expect_abstain: false
+  key_facts: ["chunk", "sentence"]
+
+- id: q2
+  category: simple
+  question: "What does FAISS provide and what are its main limitations?"
+  expected_documents: ["vector_database_comparison.pdf"]
+  expected_workflow: rag
+  expect_abstain: false
+  key_facts: ["library", "gpu"]
+
+- id: q3
+  category: simple
+  question: "What is pgvector and which index types does it support?"
+  expected_documents: ["vector_database_comparison.pdf"]
+  expected_workflow: rag
+  expect_abstain: false
+  key_facts: ["postgres", "hnsw"]
+
+- id: q4
+  category: simple
+  question: "What are the core concepts of LangGraph?"
+  expected_documents: ["agentic_ai_frameworks.pdf"]
+  expected_workflow: rag
+  expect_abstain: false
+  key_facts: ["node", "edge", "state"]
+
+- id: q5
+  category: simple
+  question: "How does retrieval-augmented generation help reduce hallucinations?"
+  expected_documents: ["rag_architecture_patterns.pdf"]
+  expected_workflow: rag
+  expect_abstain: false
+  key_facts: ["ground", "knowledge"]
+
+- id: q6
+  category: multi_step
+  question: "Compare FAISS, pgvector, and Chroma for a production RAG system."
+  expected_documents: ["vector_database_comparison.pdf"]
+  expected_workflow: agentic
+  expect_abstain: false
+  key_facts: ["faiss", "pgvector", "chroma"]
+
+- id: q7
+  category: multi_step
+  question: "Compare the LangGraph and CrewAI orchestration approaches."
+  expected_documents: ["agentic_ai_frameworks.pdf"]
+  expected_workflow: agentic
+  expect_abstain: false
+  key_facts: ["graph", "role"]
+
+- id: q8
+  category: multi_step
+  question: "What are the differences between sentence-based chunking and fixed-size chunking, and how do they affect retrieval?"
+  expected_documents: ["rag_architecture_patterns.pdf"]
+  expected_workflow: agentic
+  expect_abstain: false
+  key_facts: ["sentence", "chunk"]
+
+- id: q9
+  category: multi_step
+  question: "Which vector database suits a workload needing ACID transactions versus one needing maximum GPU performance?"
+  expected_documents: ["vector_database_comparison.pdf"]
+  expected_workflow: agentic
+  expect_abstain: false
+  key_facts: ["pgvector", "faiss"]
+
+- id: q10
+  category: ambiguous
+  question: "Which framework is the best one to use?"
+  expected_documents: ["agentic_ai_frameworks.pdf"]
+  expect_abstain: false
+  key_facts: []
+
+- id: q11
+  category: ambiguous
+  question: "How should I handle scaling?"
+  expected_documents: []
+  expect_abstain: false
+  key_facts: []
+
+- id: q12
+  category: unanswerable
+  question: "What is Best Buy's return policy for laptops?"
+  expected_documents: []
+  expect_abstain: true
+  key_facts: []
+
+- id: q13
+  category: unanswerable
+  question: "Who won the 2022 FIFA World Cup final?"
+  expected_documents: []
+  expect_abstain: true
+  key_facts: []
+
+- id: q14
+  category: unanswerable
+  question: "What is the monthly subscription price of the OpenAI GPT-4 API?"
+  expected_documents: []
+  expect_abstain: true
+  key_facts: []

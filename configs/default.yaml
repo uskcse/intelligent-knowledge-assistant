@@ -1,0 +1,68 @@
+# ---------------------------------------------------------------------------
+# Default, non-secret tunables for the Knowledge Assistant.
+# Loaded by knowledge_assistant.core.config as the base layer.
+# Precedence (low -> high): defaults in code < this file < .env < environment.
+# Secrets (API keys) must ONLY be provided via environment variables.
+# ---------------------------------------------------------------------------
+
+env: local
+log_level: INFO
+log_json: false
+
+# LLM
+llm_provider: ollama
+ollama_base_url: http://localhost:11434
+ollama_model: llama3.2:3b
+ollama_timeout: 120
+llm_temperature: 0.1
+llm_num_ctx: 8192
+openai_model: gpt-4o-mini
+
+# Embeddings
+embedding_provider: sentence_transformers
+embedding_model: BAAI/bge-small-en-v1.5
+embedding_device: auto
+openai_embedding_model: text-embedding-3-small
+
+# Reranker
+reranker_enabled: true
+reranker_model: BAAI/bge-reranker-base
+rerank_top_n: 5
+
+# Vector store
+chroma_host: localhost
+chroma_port: 8000
+chroma_collection: knowledge_base
+
+# Paths
+corpus_dir: data/corpus
+data_dir: data
+
+# Chunking
+chunk_size_tokens: 600
+chunk_overlap_tokens: 90
+min_chunk_tokens: 50
+
+# Retrieval
+retrieval_top_k: 5
+dense_top_k: 20
+bm25_top_k: 20
+rrf_k: 60
+hybrid_enabled: true
+bm25_enabled: true
+
+# Grounding / abstention
+grounding_enabled: true
+grounding_min_score: 0.15
+
+# Agent
+agent_enabled: true
+agent_max_steps: 8
+router_mode: auto
+query_rewrite_enabled: true
+
+# API
+api_host: 0.0.0.0
+api_port: 8080
+api_base_url: http://localhost:8080
+cors_origins: "*"
