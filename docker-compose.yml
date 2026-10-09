@@ -1,0 +1,142 @@
+# Single-command stack:  docker compose up --build
+# Brings up: ollama (pulls the LLM) -> chroma -> ingest (one-shot) -> api -> ui
+#
+# Note: public images are used for portability so an evaluator can run the stack
+# anywhere. Swap in an internal mirror/registry if required.
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ka-ollama
+    environment:
+      KA_OLLAMA_MODEL: ${KA_OLLAMA_MODEL:-llama3.2:3b}
+      # Optional corporate proxy passthrough for model pulls (no-op when unset).
+      HTTP_PROXY: ${HTTP_PROXY:-}
+      HTTPS_PROXY: ${HTTPS_PROXY:-}
+      NO_PROXY: ${NO_PROXY:-}
+    entrypoint: ["/bin/sh", "/entrypoint.sh"]
+    volumes:
+      - ollama_data:/root/.ollama
+      - ./docker/ollama-entrypoint.sh:/entrypoint.sh:ro
+    ports:
+      - "11434:11434"
+    healthcheck:
+      # Healthy once the server responds; the model pull happens in the background,
+      # so the stack comes up even if the pull is slow/blocked (api degrades gracefully).
+      test: ["CMD-SHELL", "ollama list >/dev/null 2>&1 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
+    restart: unless-stopped
+
+  chroma:
+    image: chromadb/chroma:latest
+    container_name: ka-chroma
+    environment:
+      IS_PERSISTENT: "TRUE"
+      ANONYMIZED_TELEMETRY: "FALSE"
+    volumes:
+      - chroma_data:/data
+    ports:
+      - "8000:8000"
+    healthcheck:
+      # The Chroma image ships only bash (no curl/python); use bash's /dev/tcp.
+      test: ["CMD", "bash", "-c", "exec 3<>/dev/tcp/localhost/8000"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 15s
+    restart: unless-stopped
+
+  # One-shot ingestion job: populates Chroma, then exits. Idempotent via manifest.
+  ingest:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    image: knowledge-assistant:latest
+    pull_policy: build
+    container_name: ka-ingest
+    command: ["ka-ingest", "run"]
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      KA_CHROMA_HOST: chroma
+      KA_CHROMA_PORT: "8000"
+      KA_CORPUS_DIR: data/corpus
+      KA_DATA_DIR: data
+      HF_HUB_OFFLINE: "1"
+      TRANSFORMERS_OFFLINE: "1"
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      chroma:
+        condition: service_healthy
+    restart: "no"
+
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    image: knowledge-assistant:latest
+    pull_policy: build
+    container_name: ka-api
+    command:
+      ["uvicorn", "knowledge_assistant.api.app:app", "--host", "0.0.0.0", "--port", "8080"]
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      KA_CHROMA_HOST: chroma
+      KA_CHROMA_PORT: "8000"
+      KA_OLLAMA_BASE_URL: http://ollama:11434
+      KA_OLLAMA_MODEL: ${KA_OLLAMA_MODEL:-llama3.2:3b}
+      KA_CORPUS_DIR: data/corpus
+      KA_DATA_DIR: data
+      HF_HUB_OFFLINE: "1"
+      TRANSFORMERS_OFFLINE: "1"
+    volumes:
+      - ./data:/app/data
+    ports:
+      - "8080:8080"
+    depends_on:
+      chroma:
+        condition: service_healthy
+      ollama:
+        condition: service_healthy
+      ingest:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+  ui:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    image: knowledge-assistant:latest
+    pull_policy: build
+    container_name: ka-ui
+    command:
+      ["chainlit", "run", "ui/chainlit_app.py", "--host", "0.0.0.0", "--port", "8000"]
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      KA_API_URL: http://api:8080
+    ports:
+      - "8501:8000"
+    healthcheck:
+      # Override the image healthcheck (targets 8080); Chainlit serves on 8000.
+      test: ["CMD", "curl", "-fsS", "http://localhost:8000/"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  ollama_data:
+  chroma_data:

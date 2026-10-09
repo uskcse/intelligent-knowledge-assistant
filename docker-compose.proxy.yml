@@ -1,0 +1,11 @@
+# Corporate CA override for TLS-intercepting proxies.
+# Auto-applied by scripts/run.sh when `certs/corp-ca.crt` exists, or manually:
+#   docker compose -f docker-compose.yml -f docker-compose.proxy.yml up --build
+#
+# The Ollama entrypoint runs `update-ca-certificates`, appending the mounted CA to
+# the system trust store (so it augments, not replaces, the public roots) and model
+# pulls succeed behind the proxy. For a forward proxy, set HTTPS_PROXY instead.
+services:
+  ollama:
+    volumes:
+      - ./certs/corp-ca.crt:/usr/local/share/ca-certificates/corp-ca.crt:ro
